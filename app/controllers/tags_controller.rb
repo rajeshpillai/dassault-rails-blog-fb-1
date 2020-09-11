@@ -11,6 +11,7 @@ class TagsController < ApplicationController
 
   def destroy 
     # @tag = Tag.find(params[:id])
+    # byebug
     @tag.destroy 
     redirect_to tags_path, notice: "Tag was successfully deleted."
   end
