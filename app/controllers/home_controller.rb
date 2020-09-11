@@ -6,4 +6,8 @@ class HomeController < ApplicationController
 
     render plain: "OK"
   end
+
+  def index 
+    render plain: "This is index page"
+  end
 end
