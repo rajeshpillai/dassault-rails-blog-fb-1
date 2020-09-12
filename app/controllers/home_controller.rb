@@ -9,7 +9,8 @@ class HomeController < ApplicationController
   def index 
     # Query the DB
     @categories = Category.all 
-
+    @tags = Tag.all 
+    
     @posts = ["post 1", "post 2"]
   end
 
