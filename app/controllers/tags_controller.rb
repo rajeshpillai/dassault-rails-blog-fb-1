@@ -1,5 +1,5 @@
 class TagsController < ApplicationController
-  before_action :set_tag, only: [:show, :destroy]
+  before_action :set_tag, only: [:show, :destroy, :edit, :update]
   
   def index
     @tags = Tag.all 
@@ -13,6 +13,11 @@ class TagsController < ApplicationController
     @tag = Tag.new
   end
 
+  def edit 
+    
+  end
+
+
   # POST /tags
   def create
     p params
@@ -25,7 +30,16 @@ class TagsController < ApplicationController
     else 
       render :new
     end
+  end
 
+  # PATCH/PUT /tags/:id
+  def update 
+    # UPDATE tags set name = "name" where id = :id
+    if @tag.update(tag_params) 
+      redirect_to tags_path, notice: "Tag was successfully updated!"
+    else 
+      render :edit
+    end
   end
 
   def destroy 
