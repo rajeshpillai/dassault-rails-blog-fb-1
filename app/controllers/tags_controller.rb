@@ -2,11 +2,28 @@ class TagsController < ApplicationController
   before_action :set_tag, only: [:show, :destroy, :edit, :update]
   
   def index
-    @tags = Tag.all 
+    @tags = Tag.all  
+
+    if params[:format] == "html"
+      p params[:format]
+    elsif params[:format] == "json"
+      # @tags.to_json
+      render json: @tags
+    elsif params[:format] == "js"
+    end
   end
 
   def show 
     # @tag = Tag.find(params[:id])
+
+    if params[:format] == "html"
+    elsif params[:format] == "json"
+      # @tags.to_json
+      puts "**************"
+      p @tag.to_json
+      render json: @tag
+    end
+
   end
 
   def new 
@@ -14,7 +31,6 @@ class TagsController < ApplicationController
   end
 
   def edit 
-    
   end
 
 
