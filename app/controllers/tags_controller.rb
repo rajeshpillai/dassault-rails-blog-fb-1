@@ -9,6 +9,24 @@ class TagsController < ApplicationController
     # @tag = Tag.find(params[:id])
   end
 
+  def new 
+    @tag = Tag.new
+  end
+
+  # POST /tags
+  def create
+    p params
+    # @tag = Tag.new(params)  # permission error
+    @tag = Tag.new(tag_params)
+
+    @tag.save
+    # PRG => Post - Do a Redirect -> To make a GET request
+
+    redirect_to tags_path, notice: "Tag was successfully created!"
+
+
+  end
+
   def destroy 
     # @tag = Tag.find(params[:id])
     # byebug
@@ -17,7 +35,13 @@ class TagsController < ApplicationController
   end
 
   private 
+  
   def set_tag 
     @tag = Tag.find(params[:id])
   end
+
+  def tag_params
+    params.require(:tag).permit(:name)
+  end
+
 end
