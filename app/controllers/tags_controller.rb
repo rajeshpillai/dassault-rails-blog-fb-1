@@ -19,11 +19,12 @@ class TagsController < ApplicationController
     # @tag = Tag.new(params)  # permission error
     @tag = Tag.new(tag_params)
 
-    @tag.save
-    # PRG => Post - Do a Redirect -> To make a GET request
-
-    redirect_to tags_path, notice: "Tag was successfully created!"
-
+    if @tag.save
+      # PRG => Post - Do a Redirect -> To make a GET request
+      redirect_to tags_path, notice: "Tag was successfully created!"
+    else 
+      render :new
+    end
 
   end
 
