@@ -7,9 +7,29 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Tag.delete_all 
+Category.delete_all
 
 # create will immediately persist the record to the DB
 Tag.create(name: "javascript")
 Tag.create(name: "react")
 Tag.create(name: "ruby")
 Tag.create(name: "rails")
+
+
+Category.create(
+    name: "Web Development", 
+    description: "All about web development"
+)
+
+Category.create(
+  name: "Programming", 
+  description: "All about programming"
+)
+
+Category.create(
+  name: "JavaScript", 
+  description: "All about javascript"
+)
+
+
+
