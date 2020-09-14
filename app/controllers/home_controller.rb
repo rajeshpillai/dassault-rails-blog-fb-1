@@ -24,7 +24,10 @@ class HomeController < ApplicationController
 
     if params.has_key? (:tag)
       # @posts = Tag.find_by(:name => params[:tag]).posts
-      @posts = Tag.where(name: params[:tag]).first.posts
+      
+      result = Tag.where(name: params[:tag])
+      @posts = result.blank? ? [] : result.first.posts
+
     end
 
     render "home/index"
