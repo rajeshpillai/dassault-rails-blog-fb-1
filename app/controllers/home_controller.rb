@@ -9,7 +9,7 @@ class HomeController < ApplicationController
   def index 
     # Query the DB
     @categories = Category.all.includes(:posts)
-    @tags = Tag.all 
+    @tags = Tag.includes(:posts) 
     
     @posts = Post.includes(:tags).published.order_by_latest
 

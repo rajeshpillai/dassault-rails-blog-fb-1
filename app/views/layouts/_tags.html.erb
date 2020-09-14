@@ -1,7 +1,7 @@
  <ul>
   <% tags.each do |tag| %>
     <li>
-      <%= tag.name %>
+      <%= tag.name %> (<%= tag.posts.size %>)
     </li>
   <% end %>
 </ul>
