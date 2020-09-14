@@ -20,6 +20,16 @@ class HomeController < ApplicationController
     
   end
 
+  def tag_search
+
+    if params.has_key? (:tag)
+      # @posts = Tag.find_by(:name => params[:tag]).posts
+      @posts = Tag.where(name: params[:tag]).first.posts
+    end
+
+    render "home/index"
+  end
+
   def about 
   end
 
