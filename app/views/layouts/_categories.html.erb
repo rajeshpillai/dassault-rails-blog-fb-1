@@ -1,7 +1,7 @@
  <ul>
   <% categories.each do |category| %>
     <li>
-      <%= category.name %>
+      <%= category.name %> (<%= category.posts.size %>)
     </li>
   <% end %>
 </ul>

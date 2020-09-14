@@ -6,8 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Post.delete_all
 Tag.delete_all 
 Category.delete_all
+
 
 # create will immediately persist the record to the DB
 Tag.create(name: "javascript")
@@ -16,20 +18,32 @@ Tag.create(name: "ruby")
 Tag.create(name: "rails")
 
 
-Category.create(
+cat_web = Category.create(
     name: "Web Development", 
     description: "All about web development"
 )
 
-Category.create(
+cat_prog = Category.create(
   name: "Programming", 
   description: "All about programming"
 )
 
-Category.create(
+cat_js = Category.create(
   name: "JavaScript", 
   description: "All about javascript"
 )
+
+
+10.times do |i|
+  Post.create(
+    title: "Post #{i}",
+    body: "Post #{i} goes here...",
+    published: true,
+    # category:  i % 2 == 0 ? cat_js : cat_prog
+    category_id: i % 2 == 0 ? cat_js.id : cat_prog.id
+
+  )
+end
 
 
 
