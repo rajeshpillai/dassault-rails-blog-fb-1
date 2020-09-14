@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+   
+  get "home/read/:id", to: "home#read", :as => :post_read
+
   resources :posts
   resources :categories
   resources :tags

@@ -10,6 +10,15 @@
     </div>
     <div class="card-footer">
       <h6>Published <%= time_ago_in_words(post.created_at) %> ago</h6>
+      <%= link_to "read more", post_read_path(post) %>
+
+      <div class="d-flex justify-content-start">
+        <% post.tags.each do |tag|%>
+          <span class="badge badge-warning mr-2">
+            <%= tag.name %>
+          </span>
+        <% end %>
+      </div>
     </div>
   </div>
 <% end %>
