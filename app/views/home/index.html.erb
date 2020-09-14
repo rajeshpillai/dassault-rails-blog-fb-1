@@ -1,3 +1,15 @@
 <h1>Welcome Rails Blog</h1>
 
-<%= @posts %>
+<% @posts.each do |post| %>
+  <div class="card mb-3">
+    <div class="card-body">
+      <h4><%= post.title %></h4>
+      <div>
+        <%= post.body.truncate(300) %>
+      </div>
+    </div>
+    <div class="card-footer">
+      <h6>Published <%= time_ago_in_words(post.created_at) %> ago</h6>
+    </div>
+  </div>
+<% end %>

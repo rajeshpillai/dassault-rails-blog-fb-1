@@ -11,7 +11,8 @@ class HomeController < ApplicationController
     @categories = Category.all.includes(:posts)
     @tags = Tag.all 
     
-    @posts = ["post 1", "post 2"]
+    @posts = Post.order_by_latest.published
+
   end
 
   def about 

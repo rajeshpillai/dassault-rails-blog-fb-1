@@ -9,6 +9,8 @@ class Post < ApplicationRecord
   scope :published, -> { where(published: true)}
   scope :unpublished, -> { where.not(published: true)}
 
+  # Override default scope (reorder)
+  scope :order_by_latest, -> { reorder(created_at: :desc)}
 
 end
 
