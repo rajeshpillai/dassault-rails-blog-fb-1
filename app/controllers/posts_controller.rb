@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :check_authorization?, only: [:edit, :update, :destroy]
 
   # GET /posts
   # GET /posts.json
@@ -74,6 +75,13 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post)
             .permit(:title, :body, :published, :category_id, :all_tags, tag_ids:[])
+    end
+
+    def check_authorization?
+      unless authorize?(@post) 
+        flash[:notice] = "Unauhorized"
+        redirect_back(fallback_location: root_path)
+      end
     end
 
     def authorize? (post) 
