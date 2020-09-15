@@ -22,10 +22,12 @@ class PostsController < ApplicationController
   def edit
   end
 
-  # POST /posts
+
+    # POST /posts
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    @post.user = current_user
 
     respond_to do |format|
       if @post.save
@@ -73,4 +75,11 @@ class PostsController < ApplicationController
       params.require(:post)
             .permit(:title, :body, :published, :category_id, :all_tags, tag_ids:[])
     end
+
+    def authorize? (post) 
+      current_user.id == post.user.id
+    end
+
+    helper_method :authorize?  # accessible authorize? method in the view
+
 end

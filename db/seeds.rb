@@ -42,10 +42,16 @@ rajesh = User.create(
   password_confirmation: "123456"
 )
 
+admin = User.create(
+  email: "admin@algorisys.com",
+  password: "123456",
+  password_confirmation: "123456"
+)
+
 
 10.times do |i|
   Post.create(
-    user: rajesh,
+    user: i % 2 == 0 ? rajesh : admin,
     title: "Post #{i}",
     body: "Post #{i} goes here...",
     tags: i % 2 == 0 ? [tag_rails, tag_ruby] : [tag_js, tag_react],

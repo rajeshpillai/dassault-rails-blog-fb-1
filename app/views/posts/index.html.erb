@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Posts</h1>
 
 <%= link_to 'New Post', new_post_path, class: "btn btn-success" %>
@@ -10,6 +8,7 @@
       <th>Title</th>
       <th>Category</th>
       <th>Tags</th>
+      <th>Author</th>
       <th>Published</th>
       <th colspan="3"></th>
     </tr>
@@ -21,10 +20,14 @@
         <td><%= post.title %></td>
         <td><%= post.category.blank? ? "No category" : post.category.name %></td>
         <td><%= post.all_tags %></td>
+        <td><%= post.user.email %></td>
         <td><%= post.published %></td>
         <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+        
+        <% if authorize?(post) %>
+          <td><%= link_to 'Edit', edit_post_path(post) %></td>
+          <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
