@@ -25,17 +25,22 @@
 
   <div class="field">
     <%= form.label :tags %>
-    <%= form.collection_select :tag_ids, Tag.all, :id, :name, 
+   
+    <%# form.collection_select :tag_ids, Tag.all, :id, :name, 
          {include_blank: true},
          {multiple: true} 
     %>
-
-    <br/>
     <%= form.collection_check_boxes :tag_ids, Tag.all, :id, :name, 
          {include_blank: true}
     %>
-  </div>
 
+  </div>
+ 
+ <div class="field">
+    <%= form.label :new_tags %>
+    <%= form.text_field :all_tags, 
+        placeholder: "Enter tags separated with comma" %>
+  </div>
 
   <div class="field">
     <%= form.label :body %>

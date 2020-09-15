@@ -14,11 +14,21 @@ class Post < ApplicationRecord
   # Override default scope (reorder)
   scope :order_by_latest, -> { reorder(created_at: :desc)}
 
+  # Custom/virtual methods for fields
+  def all_tags=(names)
+    p "all_tags: #{names}"
+    if names.blank?
+      return
+    end
+    # tag_names: => tag1, tag2, tag3
+    self.tags = names.split(",").map do |tag_name|
+       unless tag_name.blank?
+          Tag.where(name: tag_name.strip).first_or_create!
+       end
+    end
+  end
+
+  def all_tags 
+    tags.map(&:name).join(", ")
+  end
 end
-
-
-# @post = Post.new 
-
-# @post.category
-# posts table
-#   category_id   (field)
