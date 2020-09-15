@@ -7,10 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Tagging.delete_all
+
 Post.delete_all
 Tag.delete_all 
 Category.delete_all
-
+User.delete_all
 
 # create will immediately persist the record to the DB
 tag_js = Tag.create(name: "javascript")
@@ -35,8 +36,16 @@ cat_js = Category.create(
 )
 
 
+rajesh = User.create(
+  email: "rajesh@algorisys.com",
+  password: "123456",
+  password_confirmation: "123456"
+)
+
+
 10.times do |i|
   Post.create(
+    user: rajesh,
     title: "Post #{i}",
     body: "Post #{i} goes here...",
     tags: i % 2 == 0 ? [tag_rails, tag_ruby] : [tag_js, tag_react],

@@ -14,7 +14,10 @@
       </div>
     </div>
     <div class="card-footer">
-      <h6>Published <%= time_ago_in_words(post.created_at) %> ago</h6>
+      
+      <span>Published <%= time_ago_in_words(post.created_at) %> ago</span>
+      <span> by <%= post.user.email %></span>
+
       <%= link_to "read more", post_read_path(post) %>
 
       <div class="d-flex justify-content-start">
