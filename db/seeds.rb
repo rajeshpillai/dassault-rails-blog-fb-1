@@ -6,8 +6,17 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Tagging.delete_all
+puts "Deleting tables..."
 
+connection = ActiveRecord::Base.connection()
+connection.execute("delete from action_text_rich_texts");
+connection.execute("delete from active_storage_attachments");
+connection.execute("delete from active_storage_blobs");
+# connection.execute("delete from friendly_id_slugs");
+connection.close()
+
+
+Tagging.delete_all
 Post.delete_all
 Tag.delete_all 
 Category.delete_all
