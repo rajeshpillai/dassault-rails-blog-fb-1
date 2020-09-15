@@ -13,10 +13,10 @@ Category.delete_all
 
 
 # create will immediately persist the record to the DB
-Tag.create(name: "javascript")
-Tag.create(name: "react")
-Tag.create(name: "ruby")
-Tag.create(name: "rails")
+tag_js = Tag.create(name: "javascript")
+tag_react = Tag.create(name: "react")
+tag_ruby = Tag.create(name: "ruby")
+tag_rails = Tag.create(name: "rails")
 
 
 cat_web = Category.create(
@@ -39,6 +39,7 @@ cat_js = Category.create(
   Post.create(
     title: "Post #{i}",
     body: "Post #{i} goes here...",
+    tags: i % 2 == 0 ? [tag_rails, tag_ruby] : [tag_js, tag_react],
     published: true,
     # category:  i % 2 == 0 ? cat_js : cat_prog
     category_id: i % 2 == 0 ? cat_js.id : cat_prog.id
