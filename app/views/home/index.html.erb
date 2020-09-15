@@ -10,7 +10,8 @@
         <h6><%= post.category.name %></h6>
       </div>
       <div>
-        <%= post.body.to_plain_text[0..200] %>
+        <%# post.body.to_plain_text[0..200] %>
+        <%= post.body %>
       </div>
     </div>
     <div class="card-footer">
