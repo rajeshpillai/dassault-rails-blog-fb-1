@@ -28,8 +28,8 @@ class HomeController < ApplicationController
     # todo 
     q = params[:q]
 
-    @posts = Post.where('title LIKE ?', "%#{q}%").page(params[:page]).per(5) 
-       # % for contains search
+    # % for contains search
+    @posts = Post.where('title LIKE ?', "%#{q}%").page(params[:page]).per(5)
 
     render "home/index"
 
