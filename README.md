@@ -1,24 +1,106 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+SQL
 
-Things you may want to cover:
+- all posts
+select * from posts;
 
-* Ruby version
+- post (id = 1)
+select * from posts where id = 1;
 
-* System dependencies
+- post with id in 1, 2
+select * from posts where id in [1,2];
 
-* Configuration
+- All post with title "Post 1"
+select * from posts where title = 'Post 1';
 
-* Database creation
+- All post where title starts with Post......
+select * from posts where title like 'Post%';
 
-* Database initialization
+- All post that contain title with the text "Post"
+select * from posts where title like '%Post%';
 
-* How to run the test suite
+- inner join (matching record in both tables)
+select posts.* from posts
+    INNER join category
+    on posts.category_id = category.id 
 
-* Services (job queues, cache servers, search engines, etc.)
+RESULT 
+-----------
+id    title    category_id(fk)
+1     Post 1   1
+2     Post 2   1
+3     Post 3   2
 
-* Deployment instructions
 
-* ...
+
+- left outer  join (matching record in both tables)
+select posts.* from posts
+    LEFT outer join category
+    on posts.category_id = category.id 
+
+RESULT
+----------
+id    title    category_id(fk)
+1     Post 1   1
+2     Post 2   1
+3     Post 3   2
+4     Post 4   nil 
+
+
+- right outer  join (matching record in both tables)
+select posts.* from posts
+    RIGHT outer join category
+    on posts.category_id = category.id 
+
+RESULT
+----------
+id    title    category_id(fk)
+1     Post 1   1
+2     Post 2   1
+3     Post 3   2
+nil   nil      3
+
+
+
+- right outer  join (matching record in both tables)
+select posts.* from posts
+    FULL outer join category
+    on posts.category_id = category.id 
+
+RESULT
+----------
+id    title    category_id(fk)
+1     Post 1   1
+2     Post 2   1
+3     Post 3   2
+4     Post 4   nil 
+nil   nil      3
+
+
+posts
+---------
+id    title    category_id(fk)
+1     Post 1   1
+2     Post 2   1
+3     Post 3   2
+4     Post 4   nil 
+
+categories
+------------
+id    name
+1     Programming
+2     React
+3     JavaScript
+
+
+
+
+
+
+
+
+
+
+
+
