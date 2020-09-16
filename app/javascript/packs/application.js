@@ -25,3 +25,14 @@ require("channels")
 
 require("trix")
 require("@rails/actiontext")
+
+
+document.addEventListener("turbolinks:load", () => {
+  
+  $('.input-tags').find("input:checkbox").change(function (e) {
+    let checked =$('input:checkbox:checked')
+          .toArray().map(item => item.value).join();
+
+    console.log("CHECKED: ", checked);
+  });
+});

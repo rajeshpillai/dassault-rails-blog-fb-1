@@ -24,8 +24,8 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Category</th>
+      <th><%= sort_link(@q, :title)  %></th>
+      <th><%= sort_link(@q, :category_name)%></th>
       <th>Tags</th>
       <th>Author</th>
       <th>Published</th>
