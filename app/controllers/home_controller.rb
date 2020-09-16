@@ -29,7 +29,7 @@ class HomeController < ApplicationController
       # @posts = Tag.find_by(:name => params[:tag]).posts
       
       result = Tag.where(name: params[:tag])
-      @posts = result.blank? ? [] : result.first.posts
+      @posts = result.blank? ? [] : result.first.posts.page(params[:page]).per(5)
 
     end
 
@@ -41,7 +41,7 @@ class HomeController < ApplicationController
       # @posts = Tag.find_by(:name => params[:tag]).posts
       
       result = Category.where(slug: params[:category_slug])
-      @posts = result.blank? ? [] : result.first.posts
+      @posts = result.blank? ? [] : result.first.posts.page(params[:page]).per(5)
 
     end
 
