@@ -18,6 +18,8 @@ class Post < ApplicationRecord
   scope :order_by_latest, -> { reorder(created_at: :desc)}
 
   attr_accessor :all_tags
+  
+  # new and update
   after_save :assign_tags
 
   def assign_tags 
@@ -35,18 +37,18 @@ class Post < ApplicationRecord
   end
 
   # Custom/virtual methods for fields
-  def all_tagsx=(names)
-    p "all_tags: #{names}"
-    if names.blank?
-      return
-    end
-    # tag_names: => tag1, tag2, tag3
-    self.tags = names.split(",").map do |tag_name|
-       unless tag_name.blank?
-          Tag.where(name: tag_name.strip).first_or_create!
-       end
-    end
-  end
+  # def all_tagsx=(names)
+  #   p "all_tags: #{names}"
+  #   if names.blank?
+  #     return
+  #   end
+  #   # tag_names: => tag1, tag2, tag3
+  #   self.tags = names.split(",").map do |tag_name|
+  #      unless tag_name.blank?
+  #         Tag.where(name: tag_name.strip).first_or_create!
+  #      end
+  #   end
+  # end
 
   def all_tags 
     tags.map(&:name).join(", ")
