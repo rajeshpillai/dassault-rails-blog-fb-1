@@ -4,6 +4,13 @@
 
 <%= paginate @posts %>
 
+<div>
+  <%= form_with(url: post_search_path, method: :get, local:true) do %>
+    <%= text_field_tag(:q, params[:q], placeholder: "search posts") %>
+    <%= submit_tag "Search"%>
+  <% end %>
+</div>
+
 <% @posts.each do |post| %>
   <div class="card mb-3">
     <div class="card-body">

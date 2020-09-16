@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
    
   devise_for :users
+
+
+  get "home/search", to: "home#search", :as => :post_search
   get "home/read/:id", to: "home#read", :as => :post_read
   get "home/:tag/posts", to: "home#tag_search", :as => :tag_search
   get "home/category/:category_slug", to: "home#category_search", :as=> :category_search

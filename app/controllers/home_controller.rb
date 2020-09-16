@@ -23,6 +23,17 @@ class HomeController < ApplicationController
     
   end
 
+  # Search from text box 
+  def search 
+    # todo 
+    q = params[:q]
+
+    @posts = Post.where('title LIKE ?', "%#{q}%").page(params[:page]).per(5)    # % for contains search
+
+    render "home/index"
+
+  end
+
   def tag_search
 
     if params.has_key? (:tag)
