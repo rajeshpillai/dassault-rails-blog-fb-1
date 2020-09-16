@@ -12,6 +12,8 @@
     <%= f.text_field :title_or_user_email_cont, placeholder: "by title or author" %>
 
     <%= f.text_field :tags_name_or_category_name_cont, placeholder: "by category or tag" %>
+    
+    <%= f.search_field :title_or_category_name_or_user_email_or_tags_name_cont, placeholder:"title or category or email or tags" %>
 
     <%= f.search_field :category_name_cont, placeholder: "category"%>
     <%= f.submit %>
