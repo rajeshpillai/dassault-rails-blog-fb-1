@@ -1,6 +1,23 @@
+
 <h1>Posts</h1>
 
 <%= link_to 'New Post', new_post_path, class: "btn btn-success" %>
+
+<br/><br/>
+
+<div class="card-columns">
+  <%= search_form_for @q do |f|%>
+    <%= f.search_field :title_cont, placeholder: "title" %>
+    
+    <%= f.text_field :title_or_user_email_cont, placeholder: "by title or author" %>
+
+    <%= f.text_field :tags_name_or_category_name_cont, placeholder: "by category or tag" %>
+
+    <%= f.search_field :category_name_cont, placeholder: "category"%>
+    <%= f.submit %>
+  <% end %>
+</div>
+
 
 <table class="table table-striped">
   <thead>
