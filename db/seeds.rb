@@ -48,12 +48,14 @@ cat_js = Category.create(
 
 rajesh = User.create(
   email: "rajesh@algorisys.com",
+  username: "rajesh",
   password: "123456",
   password_confirmation: "123456"
 )
 
 admin = User.create(
   email: "admin@algorisys.com",
+  username: "admin",
   password: "123456",
   password_confirmation: "123456"
 )
