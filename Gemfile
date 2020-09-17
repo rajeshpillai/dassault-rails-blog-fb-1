@@ -58,3 +58,4 @@ gem 'devise'
 gem 'kaminari'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 
+gem 'faker'

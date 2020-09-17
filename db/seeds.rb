@@ -17,6 +17,7 @@ connection.close()
 
 
 Tagging.delete_all
+Comment.delete_all
 Post.delete_all
 Tag.delete_all 
 Category.delete_all
@@ -68,6 +69,18 @@ admin = User.create(
     # category:  i % 2 == 0 ? cat_js : cat_prog
     category_id: i % 2 == 0 ? cat_js.id : cat_prog.id
   )
+end
+
+
+Post.all.each do |post|
+  3.times do |i|
+    post.comments.build(
+      title: Faker::ChuckNorris.fact,
+      content: Faker::ChuckNorris.fact,
+      user: i % 2 == 0 ? admin : rajesh
+    )
+    post.save
+  end
 end
 
 
