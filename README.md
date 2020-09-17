@@ -5,8 +5,7 @@
 - Refactor
 - Learn
 
-
-SQL
+## SQL
 
 - all posts
 select * from posts;

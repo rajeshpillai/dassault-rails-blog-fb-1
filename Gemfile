@@ -59,3 +59,6 @@ gem 'kaminari'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 
 gem 'faker'
+gem 'jwt'
+
+gem 'rack-cors', '~> 0.4.0'
