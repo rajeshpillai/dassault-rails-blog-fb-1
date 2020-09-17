@@ -2,6 +2,7 @@ Rails.application.routes.draw do
    
   devise_for :users
 
+  post "home/comments/:post_id", to: "home#comments", as: :comments
 
   get "home/search", to: "home#search", :as => :post_search
   get "home/read/:id", to: "home#read", :as => :post_read
