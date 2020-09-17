@@ -1,5 +1,11 @@
 # README
 
+## TODO
+- Make code better for all
+- Refactor
+- Learn
+
+
 SQL
 
 - all posts
