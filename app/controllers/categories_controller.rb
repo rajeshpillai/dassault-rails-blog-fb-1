@@ -1,6 +1,6 @@
 # NOTE REQUIRES/ RAILS is automatically loading model
 class CategoriesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!,only: [:create, :update, :destroy]
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   # GET /categories
