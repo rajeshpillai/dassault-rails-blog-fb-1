@@ -19,6 +19,24 @@ class HomeController < ApplicationController
 
   def read 
     @post = Post.includes(:comments, :user).find(params[:id])
+
+    render :read if params[:format] == "html"
+
+    # respond_to do |format|
+    #   format.json{
+    #   render :json => { :Count => @feed1.count,
+    #   :feed => @feed_items.as_json(:include =>[:user => { :only =>
+    #   [:id,:name,:email],:methods => [:avatar_url]},:feed_likes=>{}]) }
+    #   }
+
+    if params[:format] == "json"
+      render json: @post.as_json(only: [:id, :title], 
+                                 methods: :post_body,
+                                 include:[user: {only:[:username]}]
+
+                                )
+
+    end
   end
 
   # POST /home/comments/:post_id

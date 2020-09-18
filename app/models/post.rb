@@ -54,4 +54,10 @@ class Post < ApplicationRecord
   def all_tags 
     tags.map(&:name).join(", ")
   end
+
+  # Post body
+
+  def post_body 
+    self.body.body
+  end
 end
