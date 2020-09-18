@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:create, :update, :destroy]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :check_authorization?, only: [:edit, :update, :destroy]
   
@@ -97,6 +97,7 @@ class PostsController < ApplicationController
     end
 
     def authorize? (post) 
+      return false if current_user == nil
       current_user.id == post.user.id
     end
 
