@@ -1,5 +1,5 @@
 module Api
-  class SessionsController < ActionController::API
+  class SessionsController < ApiController
     respond_to :json
 
     def create 
@@ -17,6 +17,8 @@ module Api
       
       if @user&.valid_password?(password) 
         render json: @user.as_json(only: [:email]).merge("token": @user.generate_jwt)
+      else 
+        render json: { errors: { 'email or password' => ['is invalid'] } }, status: :unprocessable_entity
       end
 
     end

@@ -1,5 +1,6 @@
 module Api
-  class PostsController < ActionController::API
+  class PostsController < ApiController
+    before_action :validate_user!, except: [:index, :show]
     respond_to :json
     def index 
       @posts = Post.all
