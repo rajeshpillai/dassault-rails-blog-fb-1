@@ -12,6 +12,12 @@ Rails.application.routes.draw do
     get "posts/:id", to: "posts#show"
     post "posts", to: "posts#create"   
     delete "posts/:id", to:"posts#destroy" 
+
+    resources :sessions, only: :create do 
+      collection do 
+        post "login"
+      end
+    end
   end
 
   scope :admin do  
