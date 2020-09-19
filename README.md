@@ -5,6 +5,39 @@
 - Refactor
 - Learn
 
+# API
+
+## Login
+POST: /api/sessions/login
+PAYLOAD: 
+{
+    "session":{
+        "email": "rajesh@algorisys.com",
+        "password":"123456"
+    }
+}
+
+RESPONSE:
+{
+    "email": "rajesh@algorisys.com",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MTMsImV4cCI6MTYwNTcxMzgzOX0.HrWdf8E5K8aPGywW7mZ_NBrnZZG-vC89Q8k9NX1UJF8"
+}
+
+## Create POST
+POST: /api/posts/
+Authorization Header: Token <Token>
+PAYLOAD:
+{
+    "post": {
+        "title": "API Post 3",
+        "body": "API Post 3 body",
+        "published": "true",
+        "category_id": "49",
+        "user_id": "13"
+    }
+}
+
+
 ## SQL
 
 - all posts
