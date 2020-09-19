@@ -2,10 +2,12 @@ Rails.application.routes.draw do
    
   devise_for :users
 
+
+
   post "home/comments/:post_id", to: "home#comments", as: :comments
 
 
-  namespace :api do 
+  namespace :api, constraints: {format: "json"} do 
     get "posts", to: "posts#index"
     get "posts/:id", to: "posts#show"
     post "posts", to: "posts#create"   
